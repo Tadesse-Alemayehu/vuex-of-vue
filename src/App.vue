@@ -1,20 +1,21 @@
 <template>
-  <h1>Counter is {{ counter }}</h1>
+  <h1>Counter is {{ count }}</h1>
   <button :onclick="incrementCounter">increment</button>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "App",
-  data() {
-    return {
-      counter: 0,
-    };
-  },
+  computed: mapState({
+    count(state) {
+      return state.count;
+    },
+  }),
   methods: {
-    incrementCounter() {
-      console.log("clicked");
-      this.counter = this.counter + 1;
+    incrementCounter(e) {
+      console.log(e.target);
+      this.$store.commit("increment");
     },
   },
 };
