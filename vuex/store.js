@@ -21,7 +21,7 @@ export default createStore({
     getCompletedTodos: (state) => state.todos.filter((todo) => todo.done),
     getCompletedTodosCount: (state, getters) =>
       getters.getCompletedTodos.length,
-    getCompletedTodosCountMult: (state, getters) => (userNumber) =>
-      getters.getCompletedTodos.length * userNumber,
+    getCompletedTodosCountMult: (state, getters) =>
+      getters.getCompletedTodos.length * 5,
   },
 });
