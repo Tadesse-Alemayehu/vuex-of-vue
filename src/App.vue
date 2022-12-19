@@ -1,6 +1,7 @@
 <template>
   <h1>Counter is {{ count }}</h1>
   <h1>completed todos are {{ completed }}</h1>
+  <h1>completed todos with user number {{ completedWithUserNumber }}</h1>
   <button :onclick="incrementCounter">increment</button>
 </template>
 
@@ -12,6 +13,9 @@ export default {
     count: "count",
     completed() {
       return this.$store.getters.getCompletedTodosCount;
+    },
+    completedWithUserNumber() {
+      return this.$store.getters.getCompletedTodosCountMult(5);
     },
   }),
   methods: {
