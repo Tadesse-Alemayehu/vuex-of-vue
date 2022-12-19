@@ -12,8 +12,8 @@ export default createStore({
   },
   mutations: {
     addToDo() {},
-    increment(state) {
-      state.count++;
+    increment(state, payload) {
+      state.count += payload.num;
       console.log(state);
     },
   },

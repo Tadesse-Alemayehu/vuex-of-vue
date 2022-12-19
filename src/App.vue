@@ -14,7 +14,11 @@ export default {
     ...mapGetters(["getCompletedTodosCount"]),
   },
   methods: {
-    ...mapMutations(["increment"]),
+    ...mapMutations({
+      increment() {
+        return this.$store.commit("increment", { num: 4 });
+      },
+    }),
     // incrementCounter(e) {
     //   console.log(e.target);
     //   this.$store.commit("increment");
