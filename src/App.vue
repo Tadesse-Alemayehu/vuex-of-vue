@@ -7,11 +7,7 @@
 import { mapState } from "vuex";
 export default {
   name: "App",
-  computed: mapState({
-    count(state) {
-      return state.count;
-    },
-  }),
+  computed: mapState(["count"]),
   methods: {
     incrementCounter(e) {
       console.log(e.target);
