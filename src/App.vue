@@ -2,11 +2,11 @@
   <h1>Counter is {{ count }}</h1>
   <h1>completed todos are {{ getCompletedTodosCount }}</h1>
   <h1>completed todos with user number {{ getCompletedTodosCountMult }}</h1>
-  <button :onclick="incrementCounter">increment</button>
+  <button :onclick="increment">increment</button>
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "App",
   computed: {
@@ -14,10 +14,11 @@ export default {
     ...mapGetters(["getCompletedTodosCount"]),
   },
   methods: {
-    incrementCounter(e) {
-      console.log(e.target);
-      this.$store.commit("increment");
-    },
+    ...mapMutations(["increment"]),
+    // incrementCounter(e) {
+    //   console.log(e.target);
+    //   this.$store.commit("increment");
+    // },
   },
 };
 </script>
