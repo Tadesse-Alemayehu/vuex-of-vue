@@ -1,5 +1,6 @@
 <template>
   <h1>Counter is {{ count }}</h1>
+  <h1>completed todos are {{ completed }}</h1>
   <button :onclick="incrementCounter">increment</button>
 </template>
 
@@ -7,7 +8,12 @@
 import { mapState } from "vuex";
 export default {
   name: "App",
-  computed: mapState(["count"]),
+  computed: mapState({
+    count: "count",
+    completed() {
+      return this.$store.getters.getCompletedTodosCount;
+    },
+  }),
   methods: {
     incrementCounter(e) {
       console.log(e.target);
