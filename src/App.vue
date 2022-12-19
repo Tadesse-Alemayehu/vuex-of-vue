@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Counter is {{ counter }}</h1>
+  <button :onclick="incrementCounter">increment</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods: {
+    incrementCounter() {
+      console.log("clicked");
+      this.counter = this.counter + 1;
+    },
+  },
+};
 </script>
 
 <style>
