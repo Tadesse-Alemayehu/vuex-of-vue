@@ -16,7 +16,7 @@ export default {
   methods: {
     ...mapMutations({
       increment() {
-        return this.$store.commit("increment", { num: 4 });
+        return this.$store.commit({ type: "increment", num: 4 });
       },
     }),
     // incrementCounter(e) {
