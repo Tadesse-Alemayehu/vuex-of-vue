@@ -1,18 +1,21 @@
 <template>
   <h1>Counter is {{ count }}</h1>
   <h1>completed todos are {{ getCompletedTodosCount }}</h1>
-  <h1>completed todos with user number {{ getCompletedTodosCountMult }}</h1>
+  <h1>todo counts {{}}</h1>
   <button :onclick="increment">increment</button>
+  <button :onclick="fetchAndAddTodo">Add todo</button>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 import * as types from "./vuex/mutation-types";
 export default {
   name: "App",
   computed: {
     ...mapState(["count"]),
-    ...mapGetters(["getCompletedTodosCount"]),
+    getCompletedTodosCount() {
+      return this.$store.state.todos.length;
+    },
   },
   methods: {
     ...mapMutations({
@@ -24,10 +27,7 @@ export default {
         });
       },
     }),
-    // incrementCounter(e) {
-    //   console.log(e.target);
-    //   this.$store.commit("increment");
-    // },
+    ...mapActions(["fetchAndAddTodo"]),
   },
 };
 </script>

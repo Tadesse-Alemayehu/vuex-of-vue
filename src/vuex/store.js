@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+import * as types from "./mutation-types";
 export default createStore({
   state() {
     return {
@@ -11,7 +11,10 @@ export default createStore({
     };
   },
   mutations: {
-    addToDo() {},
+    addToDo(state, payload) {
+      state.todos.push(payload.todo);
+      console.log(state);
+    },
     increment(state, payload) {
       state.count += payload.num;
       console.log(state);
@@ -23,5 +26,14 @@ export default createStore({
       getters.getCompletedTodos.length,
     getCompletedTodosCountMult: (state, getters) =>
       getters.getCompletedTodos.length * 5,
+  },
+  actions: {
+    fetchAndAddTodo({ commit }) {
+      setTimeout(() => {
+        commit(types.ADD_TODO, {
+          todo: { id: 3, text: "this is the thired todo", done: false },
+        });
+      }, 1000);
+    },
   },
 });
