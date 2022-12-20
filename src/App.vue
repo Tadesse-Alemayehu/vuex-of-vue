@@ -7,6 +7,7 @@
 
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+import * as types from "./vuex/mutation-types";
 export default {
   name: "App",
   computed: {
@@ -16,7 +17,11 @@ export default {
   methods: {
     ...mapMutations({
       increment() {
-        return this.$store.commit({ type: "increment", num: 4 });
+        console.log(types.INCREMENT_COUNTER_BY_4);
+        return this.$store.commit({
+          type: types["INCREMENT_COUNTER_BY_4"],
+          num: 4,
+        });
       },
     }),
     // incrementCounter(e) {
